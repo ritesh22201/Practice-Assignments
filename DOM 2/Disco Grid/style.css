@@ -52,14 +52,18 @@ table {
 h1{
     font-size: 30px;
     text-align: center;
-    margin-bottom: 30px;
+}
+h2{
+    font-size: 25px;
+    text-align: center;
+    margin: 10px 0;
 }
 #box{
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     border: 1px solid black;
     width: 92%;
-    margin:10px auto;
+    margin:30px auto;
 }
 
 #box > div{
