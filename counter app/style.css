@@ -26,6 +26,9 @@ p{
     margin: 5px ;
 }
 
+#container button:active{
+    transform: scale(0.98);
+}
 #container button:nth-child(2){
     background-color: limegreen;
     color: white;
