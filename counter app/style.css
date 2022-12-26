@@ -1,0 +1,55 @@
+#Pbox{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: linen;
+    margin-top: 60px;
+    padding: 30px 0px 60px 0px;
+}
+
+p{
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+    color: teal;
+}
+
+#container > div{
+    border: 1px solid black;
+    width: 82%;
+    margin:20px auto;
+}
+
+#container > div > h1{
+    margin: 5px ;
+}
+
+#container button:nth-child(2){
+    background-color: limegreen;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+#container button:nth-child(3){
+    background-color: red;
+    color: white;
+    border: none;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+#container button:nth-child(4){
+    background-color: rgb(139, 185, 225);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 8px 12px;
+}
