@@ -1,4 +1,4 @@
-#Pbox{
+#Pbox {
     width: 30%;
     margin: auto;
     text-align: center;
@@ -9,27 +9,28 @@
     padding: 30px 0px 60px 0px;
 }
 
-p{
+p {
     font-size: 35px;
     font-weight: bold;
     margin: 0;
     color: teal;
 }
 
-#container > div{
+#container>div {
     border: 1px solid black;
     width: 82%;
-    margin:20px auto;
+    margin: 20px auto;
 }
 
-#container > div > h1{
-    margin: 5px ;
+#container>div>h1 {
+    margin: 5px;
 }
 
-#container button:active{
+#container button:active {
     transform: scale(0.98);
 }
-#container button:nth-child(2){
+
+#container button:nth-child(2) {
     background-color: limegreen;
     color: white;
     border: none;
@@ -38,7 +39,7 @@ p{
     padding: 8px 12px;
 }
 
-#container button:nth-child(3){
+#container button:nth-child(3) {
     background-color: red;
     color: white;
     border: none;
@@ -48,11 +49,27 @@ p{
     padding: 8px 12px;
 }
 
-#container button:nth-child(4){
+#container button:nth-child(4) {
     background-color: rgb(139, 185, 225);
     color: black;
     border: none;
     border-radius: 5px;
     font-size: 18px;
     padding: 8px 12px;
+}
+
+@media screen and (min-width:601px) and (max-width:950px) {
+    #Pbox {
+        width: 400px;
+        text-align: center;
+    }
+
+}
+
+@media screen and (min-width:240px) and (max-width:600px) {
+    #Pbox {
+        width: 320px;
+        padding: 30px 30px;
+    }
+
 }
