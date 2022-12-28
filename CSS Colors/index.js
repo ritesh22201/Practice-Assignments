@@ -149,7 +149,7 @@ let COLOR = [
     "YellowGreen",
   ];
 
-
+ 
   let cont = document.getElementById("container");
   let h1 = document.querySelector('h1');
 
