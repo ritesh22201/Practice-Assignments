@@ -1,0 +1,41 @@
+.container{
+    border: 1px solid black;
+}
+
+.container > h1{
+    color: teal;
+}
+
+.card{
+    width: 25%;
+    height: 200px;
+    text-align: center;
+    margin: auto;
+    margin-top: 40px;
+    padding-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn{
+    margin-left: 9px;
+    padding: 9px 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn:active{
+    scale: 0.98;
+}
+
+.increment{
+    background-color: green;
+}
+
+.decrement{
+    background-color: red;
+}
+
+.reset{
+    background-color: gray;
+}
