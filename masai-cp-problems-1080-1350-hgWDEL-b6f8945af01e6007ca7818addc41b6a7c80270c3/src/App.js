@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import './App.css'
 
 let getData = async(page = 1) => {
   let res = await fetch(`https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees/?limit=12&page=${page}`)
@@ -31,7 +32,7 @@ function App() {
     <div className="App">
       <h1>Employees Dashboard</h1>
       <div className="employee">
-        <table border="1px">
+        <table border="1px" className="table">
           <thead>
             <tr>
               <th>Name</th>
@@ -57,7 +58,7 @@ function App() {
       </div>
       {/* add your pagination here */}
       {new Array(totalCount).fill(0).map((item, ind) => {
-        return <button disabled={page == ind + 1} onClick={() => onChange(ind + 1)} style={{border : page == ind + 1 ? '1px solid red' : ''}}>{ind + 1}</button>
+        return <button disabled={page == ind + 1} onClick={() => onChange(ind + 1)} className={page == ind + 1 ? 'borderRed' : ''}>{ind + 1}</button>
       })}      
     </div>
   );

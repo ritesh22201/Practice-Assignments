@@ -13,15 +13,6 @@
   }
 }
 
-.borderRed{
-  border: 1px solid red;
-}
-
-.table{
-  width: 50%;
-  margin: auto;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -45,4 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
