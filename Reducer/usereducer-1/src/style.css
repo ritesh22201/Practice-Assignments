@@ -1,0 +1,14 @@
+.input{
+    padding: 10px;
+    font-size: 15px;
+}
+
+.btn{
+    padding: 11px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.btn:active{
+    scale: 0.98;
+}
