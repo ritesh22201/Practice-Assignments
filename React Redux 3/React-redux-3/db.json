@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Learn React",
+      "status": false
+    },
+    {
+      "title": "Learn JS",
+      "status": false,
+      "id": 2
+    },
+    {
+      "title": "Learn HTML",
+      "status": false,
+      "id": 3
+    },
+    {
+      "title": "Learn TS",
+      "status": false,
+      "id": 4
+    },
+    {
+      "title": "Learn Tailwind",
+      "status": false,
+      "id": 5
+    },
+    {
+      "title": "Buy a car",
+      "status": false,
+      "id": 6
+    }
+  ]
+}
