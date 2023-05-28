@@ -1,0 +1,96 @@
+{
+ "users" : [
+    {
+      "id": 1,
+      "name": "Leanne Graham",
+      "username": "Bret",
+      "email": "Sincere@april.biz",
+      "phone" : "8434022201",
+      "address":  "Kulas Light",
+      "status" : "active"
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "username": "Antonette",
+      "email": "Shanna@melissa.tv",
+      "phone" : "8434022212",
+      "address":  "Victor Plains",
+      "status" : "active"
+    },
+    {
+      "id": 3,
+      "name": "Clementine Bauch",
+      "username": "Samantha",
+      "email": "Nathan@yesenia.net",
+      "phone" : "8434022209",
+      "address": "Douglas Extension",
+      "status" : "active"
+    },
+    {
+      "id": 4,
+      "name": "Patricia Lebsack",
+      "username": "Karianne",
+      "email": "Julianne.OConner@kory.org",
+      "phone" : "8434022208",
+      "address":"Hoeger Mall",
+      "status" : "inactive"
+    },
+    {
+      "id": 5,
+      "name": "Chelsey Dietrich",
+      "username": "Kamren",
+      "email": "Lucio_Hettinger@annie.ca",
+      "phone" : "8434022207",
+      "address":  "Skiles Walks",
+      "status" : "inactive"
+    },
+    {
+      "id": 6,
+      "name": "Mrs. Dennis Schulist",
+      "username": "Leopoldo_Corkery",
+      "email": "Karley_Dach@jasper.info",
+      "phone" : "8434022206",
+      "address":  "Norberto Crossing",
+      "status" : "active"
+    },
+    {
+      "id": 7,
+      "name": "Kurtis Weissnat",
+      "username": "Elwyn.Skiles",
+      "email": "Telly.Hoeger@billy.biz",
+      "phone" : "8434022205",
+      "address":  "Rex Trail",
+      "status" : "inactive"   
+    },
+    {
+      "id": 8,
+      "name": "Nicholas Runolfsdottir V",
+      "username": "Maxime_Nienow",
+      "email": "Sherwood@rosamond.me",
+      "phone" : "8434022204",
+      "address":  "Ellsworth Summit",
+      "status" : "active"
+    },
+    {
+      "id": 9,
+      "name": "Glenna Reichert",
+      "username": "Delphine",
+      "email": "Chaim_McDermott@dana.io",
+      "phone" : "8434022203",
+      "address":"Dayna Park",
+      "status" : "active"
+      },
+      
+    
+    {
+      "id": 10,
+      "name": "Clementina DuBuque",
+      "username": "Moriah.Stanton",
+      "email": "Rey.Padberg@karina.biz",
+      "phone" : "8434022202",
+      "address": "Kattie Turnpike",
+      "status" : "inactive"
+    }
+  ]
+}

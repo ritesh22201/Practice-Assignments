@@ -1,0 +1,15 @@
+.main-cont{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.container{
+    padding: 10px;
+}
+
+.container > img{
+    width: 100%;
+}

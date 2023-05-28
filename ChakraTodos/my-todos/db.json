@@ -1,0 +1,9 @@
+{
+    "users" : [
+        {"id" : 1, "name" : "Ritesh Goswami", "gender" : "Male"},
+        {"id" : 2, "name" : "Sharvari Hupare", "gender" : "Female"}
+    ],
+    "posts" : [
+        {"id" : 1, "title" : "json-server", "author" : "typicode"}
+    ]
+}
