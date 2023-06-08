@@ -13,5 +13,5 @@ export default Button;
 
 Button.propTypes = {
     size : PropTypes.string.isRequired,
-    color : PropTypes.string
+    color : PropTypes.string.isRequired
 }
