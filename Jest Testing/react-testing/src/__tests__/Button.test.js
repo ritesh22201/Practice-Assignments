@@ -4,11 +4,6 @@ import App from '../App';
 import renderer from 'react-test-renderer';
 
 describe('Testing our button component', () => {
-    // it('Button should be rendered', () => {
-    //     render(
-    //         <Button size={'color'}>Test-Click</Button>
-    //     )
-    // })
 
     it('The counter should be present on the DOM with initial value as 0', () => {
         render(<App/>);
