@@ -2,7 +2,7 @@ import {render, screen, fireEvent} from '@testing-library/react';
 import Counter from '../Components/Counter';
 
 describe('test files for counter', () => {    
-    it('Should render the app', () => {
+    it('should render without any error', () => {
         render(<Counter/>);
     })
 
@@ -11,6 +11,14 @@ describe('test files for counter', () => {
         const heading = screen.getByTestId('counter');
         expect(heading).toBeInTheDocument();
         expect(heading).toHaveTextContent('Counter : 0')
+    })
+
+    it('should have add and reduce buttons', () => {
+        render(<Counter/>);
+        let inc = screen.getByTestId('increment');
+        const dec = screen.getByTestId('decrement');
+        expect(inc).toBeInTheDocument();
+        expect(dec).toBeInTheDocument();
     })
 
     it('Should increment the counter value', () => {
@@ -27,11 +35,4 @@ describe('test files for counter', () => {
         expect(heading).toHaveTextContent('Counter : 1');
     })
 
-    // it('Should decrement the counter value', () => {
-    //     render(<Counter/>)
-        
-    //     const heading = screen.getByTestId('counter');
-    //     expect(heading).toHaveTextContent('Counter : 0')
-    //     expect(heading).toHaveTextContent('Counter : -1')
-    // })
 })
