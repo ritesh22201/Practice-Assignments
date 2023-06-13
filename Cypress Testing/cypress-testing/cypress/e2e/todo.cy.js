@@ -15,5 +15,4 @@ describe('Test Todo', () => {
         cy.get('.todo-list').children('have.length', 3);
     })
 
-
 })

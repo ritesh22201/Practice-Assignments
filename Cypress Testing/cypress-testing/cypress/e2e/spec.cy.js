@@ -15,6 +15,19 @@ describe('template spec', () => {
   //   cy.get('[data-testid=counter]').should('have.text', 'Counter : 0');
   // })
 
+  it('Should exist', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('[data-testid=counter]').should('exist');
+    cy.get('[data-testid=counter]').should('have.text', 'Counter : 0');
+  })
+
+  it('Should increment the value of counter', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('[data-testid=counter]').should('have.text', 'Counter : 0');
+    cy.get('[data-testid=add-button]').click();
+    cy.get('[data-testid=counter]').should('have.text', 'Counter : 1');
+  })
+
   // it('On clicking counter value should change', () => {
   //   cy.visit('http://localhost:3000/');
   //   cy.get('[data-testid=add-button]').click();
