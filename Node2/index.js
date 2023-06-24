@@ -7,15 +7,16 @@ const server = http.createServer((request, response) => {
         response.end();
     }
     else if(request.url === '/data'){
-        fs.readFile('./data.json', (err, data) => {
-            if(err){
-                response.end(err);
-            }
-            else{
-                response.end(data);
-            }
-        })
-        // response.end('Some data will be sent');
+        // fs.readFile('./data.json', (err, data) => {
+        //     if(err){
+        //         response.end(err);
+        //     }
+        //     else{
+        //         response.end(data);
+        //     }
+        // })
+        const dataStream = fs.createReadStream('./data.json', 'utf-8');
+        dataStream.pipe(response);
     }
     else if(request.url === '/todo'){
         fs.readFile('./todo.json', (err, data) => {
@@ -26,7 +27,16 @@ const server = http.createServer((request, response) => {
                 response.end(data);
             }
         })
-        // response.end('Blog Data');
+    }
+    else if(request.url === '/addData' && request.method === 'POST'){
+        let str = '';
+        request.on('data', (chunk) => {
+            str += chunk;
+        })
+        request.on('end', () => {
+            console.log(str);
+        })  
+        response.end('Data Added');
     }
     else{
         response.end(http.STATUS_CODES['404']);
