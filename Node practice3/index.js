@@ -6,14 +6,17 @@ const server = http.createServer((req, res) => {
         res.end('This is the home page');
     }
     else if (req.url === '/data') {
-        fs.readFile('./data.json', (err, data) => {
-            if (err) {
-                res.end(err);
-            }
-            else {
-                res.end(data);
-            }
-        })
+        // fs.readFile('./data.json', (err, data) => {
+        //     if (err) {
+        //         res.end(err);
+        //     }
+        //     else {
+        //         res.end(data);
+        //     }
+        // })
+
+        const dataStream = fs.createReadStream('./data.json', 'utf-8');
+        dataStream.pipe(res);
     }
     else if (req.url === '/todos') {
         fs.readFile('./todo.json', (err, data) => {
@@ -25,6 +28,17 @@ const server = http.createServer((req, res) => {
                 res.end(data);
             }
         })
+    }
+    else if(req.url === '/adddata', req.method === 'POST'){
+        // console.log(req.body);
+        let str = '';
+        req.on('data', (chunk) => {
+            str += chunk;
+        })
+        req.on('end', () => {
+            console.log(str);
+        })
+        res.end('Data has been added');
     }
     else {
         res.end(http.STATUS_CODES["404"]);
