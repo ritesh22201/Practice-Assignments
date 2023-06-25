@@ -46,7 +46,10 @@ app.delete('/deletestudent', (req, res) => {
     const new_student_data = parsed_data.students.filter((el) => {
         return el.name !== 'Munnu'
     })
-    fs.writeFileSync('./data.json', JSON.stringify(new_student_data));
+
+    parsed_data.students = new_student_data;
+
+    fs.writeFileSync('./data.json', JSON.stringify(parsed_data));
     res.send('Data has been deleted');
 })
 
