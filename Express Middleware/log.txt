@@ -1,0 +1,1 @@
+At this time 1687922463418 the user is making request on /users with GET method
