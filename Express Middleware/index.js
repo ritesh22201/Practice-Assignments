@@ -20,8 +20,8 @@ const timeLogger = (req, res, next) => {
 
 const check = (req, res, next) => {
     req.body.year = 2015
+    req.body.id = Math.floor(Math.random()*100);
     next();
-    
 }
 
 app.get('/', (req, res) => {
@@ -41,7 +41,7 @@ app.get('/users', timeLogger, (req, res) => {
 })
 
 app.post('/movie', check, (req, res) => {
-
+   res.send(req.body);
 })
 
 // app.get('/:id', (req, res) => {
