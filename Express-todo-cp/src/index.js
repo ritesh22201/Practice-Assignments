@@ -70,6 +70,5 @@ app.listen(7700, () => {
     console.log(`Server is running at port ${7700}`);
 })
 // export the server
-// eg.module.exports = app;
 
 module.exports = app;
