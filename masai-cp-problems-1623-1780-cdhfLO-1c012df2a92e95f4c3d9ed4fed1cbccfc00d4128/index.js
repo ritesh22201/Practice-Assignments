@@ -1,16 +1,85 @@
 //  do not forgot to export server
 const express = require('express');
 const fs = require('fs');
+const { addID } = require('./middlewares/addID.middleware');
+const { auth } = require('./middlewares/auth.middleware');
+const { logger } = require('./middlewares/logger.middleware');
 const app = express();
 app.use(express.json());
 
-app.post('/add/hero', (req, res) => {
-    const data = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
-    data.heroes.push(req.body);
+app.use(logger);
 
-    fs.writeFileSync('./db.json', JSON.stringify(data));
-    console.log(data.heroes)
-    res.send('hey');
+app.post('/add/hero', addID, (req, res) => {
+    fs.readFile('./db.json', 'utf-8', (err, data) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            const parsed_data = JSON.parse(data);
+            // console.log(parsed_data.heroes)
+            parsed_data.heroes.push(req.body);
+            fs.writeFileSync('./db.json', JSON.stringify(parsed_data));
+            res.send(parsed_data.heroes);
+        }
+    });
+})
+
+app.get('/heroes', (req, res) => {
+    fs.readFile('./db.json', 'utf-8', (err, data) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            const parsed_data = JSON.parse(data);
+            res.send(parsed_data.heroes);
+        }
+    })
+})
+
+app.patch('/update/villain/:hero_id', auth, (req, res) => {
+    const id = +req.params.hero_id;
+    
+    fs.readFile('./db.json', 'utf-8', (err, data) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            const parsed_data = JSON.parse(data);
+            let flag = false;
+            for(let i = 0; i<parsed_data.heroes.length; i++){
+                if(parsed_data.heroes[i].id == id){
+                    flag = true;
+                    parsed_data.heroes[i].villains = [{...req.body}]
+                }
+            }
+
+            if(flag){
+                const updatedData = parsed_data.heroes.find(el => el.id === id);
+                fs.writeFileSync('./db.json', JSON.stringify(parsed_data));
+                res.send(updatedData);  
+            }
+            else{
+                res.send({ message: "Hero not found"});
+            }
+        }
+    })
+})
+
+app.delete('/delete/hero/:hero_id', auth, (req, res) => {
+    const id = +req.params.hero_id;
+
+    fs.readFile('./db.json', 'utf-8', (err, data) => {
+        if(err){
+            res.send(err);
+        }
+        else{
+            let parsed_data = JSON.parse(data);
+            const filteredData = parsed_data.heroes.filter(el => el.id !== id);
+            const newData = {heroes : filteredData};
+            fs.writeFileSync('./db.json', JSON.stringify(newData));
+            res.send(filteredData);
+        }
+    })
 })
 
 app.listen(8080, () => {
