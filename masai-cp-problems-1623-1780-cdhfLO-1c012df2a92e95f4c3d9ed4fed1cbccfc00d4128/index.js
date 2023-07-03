@@ -49,7 +49,8 @@ app.patch('/update/villain/:hero_id', auth, (req, res) => {
             for(let i = 0; i<parsed_data.heroes.length; i++){
                 if(parsed_data.heroes[i].id == id){
                     flag = true;
-                    parsed_data.heroes[i].villains = [{...req.body}]
+                    const {name, health} = req.body;
+                    parsed_data.heroes[i].villains.push({name, health});
                 }
             }
 
