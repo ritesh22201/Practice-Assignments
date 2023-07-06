@@ -7,8 +7,34 @@ app.get('/', (req, res) => {
     res.send('Welcome')
 })
 
-app.get('/users', (req, res) => {
-    res.send('All the users data will be sent');
+app.get('/users', async(req, res) => {
+    const query = req.query;
+    try {
+        const users = await connection.Usermodel.find(query);
+        res.send(users);
+    } catch (error) {
+        res.send(error.message);
+    }
+})
+
+app.patch('/update/:id', async(req, res) => {
+    const id = req.params.id;
+    try {
+        await connection.Usermodel.findByIdAndUpdate({_id : id}, req.body);
+        res.send({"msg" : "User has been updated"}); 
+    } catch (error) {
+        res.send({"msg" : "Cannot modify user", "error" : error.message});
+    }
+})
+
+app.delete('/delete/:id', async(req, res) => {
+    const id = req.params.id;
+    try {
+        await connection.Usermodel.findByIdAndUpdate({_id : id});
+        res.send({"msg" : "User has been deleted"}); 
+    } catch (error) {
+        res.send({"msg" : "Cannot delete user", "error" : error.message});
+    }
 })
 
 app.post('/register', async (req, res) => {
