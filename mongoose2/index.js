@@ -21,9 +21,11 @@ app.post('/register', async(req, res) => {
     }
 })
 
+// mongodb+srv://riteshgoswami22201:<password>@cluster0.hbrysov.mongodb.net/
+// mongodb://127.0.0.1:27017/
 app.listen(8080, async() => {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/');
+        await mongoose.connect('mongodb+srv://riteshgoswami22201:<password>@cluster0.hbrysov.mongodb.net/');
         console.log('connnected');
         console.log('Server is running at port 8080');
     } catch (error) {

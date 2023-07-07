@@ -18,7 +18,7 @@ app.get('/users', async(req, res) => {
 })
 
 app.patch('/update/:id', async(req, res) => {
-    const id = req.params.id;
+    const id = +req.params.id;
     try {
         await connection.Usermodel.findByIdAndUpdate({_id : id}, req.body);
         res.send({"msg" : "User has been updated"}); 
@@ -28,7 +28,7 @@ app.patch('/update/:id', async(req, res) => {
 })
 
 app.delete('/delete/:id', async(req, res) => {
-    const id = req.params.id;
+    const id = +req.params.id;
     try {
         await connection.Usermodel.findByIdAndUpdate({_id : id});
         res.send({"msg" : "User has been deleted"}); 

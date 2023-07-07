@@ -1,0 +1,72 @@
+// 1. tto show Databases
+show dbs
+
+// 2. to create Databases
+use graduates
+
+// 3. to creaet collections
+db.createCollection("users")
+
+// 4. to insert documents in collection in multiple
+
+db.users.insertMany([{
+ "first_name": "Ida",
+ "last_name": "Hammerman",
+ "percentage": 41,
+ "gender": "Female",
+ "university": "Fordham University",
+ "isMarried": false
+}, {
+ "first_name": "Phyllida",
+ "last_name": "Gauntlett",
+ "percentage": 73,
+ "gender": "Non-binary",
+ "university": "Medical Academy in Bialystok",
+ "isMarried": false
+}, {
+ "first_name": "Gilemette",
+ "last_name": "Balshen",
+ "percentage": 34,
+ "gender": "Female",
+ "university": "Universidad Rey Juan Carlos",
+ "isMarried": false
+}, {
+ "first_name": "Pebrook",
+ "last_name": "Currum",
+ "percentage": 82,
+ "gender": "Male",
+ "university": "Universidade Cruzeiro do Sul",
+ "isMarried": false
+}, {
+ "first_name": "Sidney",
+ "last_name": "Corbert",
+ "percentage": 82,
+ "gender": "Male",
+ "university": "Hogeschool voor Wetenschap en Kunst (VLEKHO), Brussel",
+ "isMarried": false
+}])
+
+
+// 5. Show the data of "Male" users who are "Single".
+
+db.users.find({$and:[{gender:"Male"},{isMarried:false}]})
+
+
+
+// 6. Show the data of all the "Female" users who scored more that 80 percent.
+
+db.users.find({$and:[{gender:"Female"},{percentage:{$gt:80}}]})
+
+
+// 7. Show the data of all the users who scored more than or equal to 50 percent.
+
+db.users.find({percentage:{$gte:50}})
+
+
+// 8. Update the data of all the "Female" users and add a field "scholarship":true.
+
+db.users.updateMany({gender:"Female"},{$set:{scholarship:true}})
+
+// 9. Delete the data of all the users who scored less than 40 percent.
+
+db.users.deleteMany({percentage:{$lte:40}})
