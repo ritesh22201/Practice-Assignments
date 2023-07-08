@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
-        if (!user) res.send('Signup first!!');
+        if (!user) res.status(400).send('Signup first!!');
         const verify = await bcrypt.compare(password, user.password);
         if(!verify){
             res.status(400).send('Incorrect Password!!');
