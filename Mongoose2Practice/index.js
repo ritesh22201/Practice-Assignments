@@ -18,6 +18,47 @@ app.post('/register', async(req, res) => {
     }
 })
 
+app.get('/users', async(req, res) => {
+    try {
+        const hero = await Superheroes.find(req.query);
+        res.status(200).send(hero);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
+app.get('/users/:id', async(req, res) => {
+    try {
+        const hero = await Superheroes.find({_id : req.params.id});
+        res.status(200).send(hero);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
+app.patch('/update/:id', async(req, res) => {
+    const ID = req.params.id;
+    const payload = req.body;
+
+    try {
+        const hero = await Superheroes.findByIdAndUpdate({_id : ID}, payload);
+        res.status(200).send(hero);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
+app.delete('/delete/:id', async(req, res) => {
+    const ID = req.params.id;
+
+    try {
+        const hero = await Superheroes.findByIdAndDelete({_id : ID});
+        res.status(200).send('Superhero deleted');
+    } catch (error) {
+        res.status(400).send(error);
+    }
+})
+
 const connect = async () => {
     try {
         await mongoose.connect('mongodb+srv://ritesh22201:Ritesh12345@cluster0.qztm0a3.mongodb.net/heroes?retryWrites=true&w=majority');
