@@ -19,8 +19,9 @@ userRouter.post('/login', async (req, res) => {
     try {
         const user = await UserModel.findOne({ email, password });
         if (user) {
-            const token = jwt.sign({ course: 'backend' }, 'masai');
-            res.status(200).send({ 'msg': 'Login Successful', token });
+            const token = jwt.sign({ course: 'backend' }, 'masai', {expiresIn : 20});
+            const refreshToken = jwt.sign({ course: 'backend' }, 'ritesh', {expiresIn : 50});
+            res.status(200).send({ 'msg': 'Login Successful', token, refreshToken });
         }
         else {
             res.status(400).send({ 'msg': 'Wrong Credentials' });
@@ -39,6 +40,26 @@ userRouter.get('/logout', (req, res) => {
     }
     blacklist.push(token);
     res.send('User logged out.');
+})
+
+// Refresh token
+
+userRouter.get('/refreshToken', (req, res) => {
+    const rToken = req.headers.authorization.split(' ')[1];
+
+    if(!rToken){
+        res.send('Login again!');
+    }
+
+    jwt.verify(rToken, 'ritesh', (err, decoded) => {
+        if(decoded){
+            const token = jwt.sign({course : 'backend'}, 'masai', {expiresIn : '7d'});
+            res.send({token});
+        }
+        else{
+            res.send('Invalid token!!');
+        }
+    })
 })
 
 module.exports = userRouter;

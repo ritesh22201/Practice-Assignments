@@ -2,6 +2,7 @@ const express = require('express');
 const connection = require('./db');
 const userRouter = require('./routes/user.route');
 const jwt = require('jsonwebtoken');
+const auth = require('./routes/auth.middleware');
 const app = express();
 app.use(express.json());
 app.use('/users', userRouter);
@@ -10,7 +11,7 @@ app.get('/', (req, res) => {
     res.send('Homepage');
 })
 
-app.get('/todos', (req, res) => {
+app.get('/todos', auth, (req, res) => {
     res.status(200).send({'msg' : 'The todos are here'});
 })
 
