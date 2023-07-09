@@ -4,7 +4,9 @@ const router = require('./routes/userRoutes');
 const app = express();
 require('dotenv').config();
 app.use(express.json());
-app.use('/user', router)
+app.use('/user', router);
+
+
 
 app.listen(process.env.port, async() => {
     try {
