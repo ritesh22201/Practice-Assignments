@@ -11,16 +11,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/todos', (req, res) => {
-    const token = req.headers.authorization.split(' ')[1];
-
-    jwt.verify(token, 'masai', (err, decoded) => {
-        if (decoded) {
-            res.status(200).send({'msg' : 'The todos are here!!'});
-        }
-        else{
-            res.status(400).send('Invalid token!!');
-        }
-    })
+    res.status(200).send({'msg' : 'The todos are here'});
 })
 
 app.listen(8080, async () => {

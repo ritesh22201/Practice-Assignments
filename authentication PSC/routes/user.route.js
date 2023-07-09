@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
+const blacklist = require('../blacklist');
 
 const userRouter = Router();
 
@@ -27,6 +28,17 @@ userRouter.post('/login', async (req, res) => {
     } catch (error) {
         res.status(400).send(error.message);
     }
+})
+
+// Blacklisting the token
+
+userRouter.get('/logout', (req, res) => {
+    const token = req.headers.authorization.split(' ')[1];
+    if(!token){
+        res.status(400).send('Login First!');
+    }
+    blacklist.push(token);
+    res.send('User logged out.');
 })
 
 module.exports = userRouter;
