@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const registerMiddleware = require('../middlewares/registermiddleware');
 const BlacklistUser = require('../models/blackListModels');
+const auth = require('../middlewares/authMiddleware');
+const BookModel = require('../models/addBookModel');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -83,4 +85,15 @@ router.get('/refreshToken', (req, res) => {
     })
 })
 
+router.post('/books/add', auth, async(req, res) => {
+    try {
+        const book = await BookModel.create(req.body);
+        res.status(200).send({'msg' : 'Book Added', book})
+    } catch (error) {
+        res.status(400).send({'msg' : error.message})
+    }
+})
+
 module.exports = router;
+
+
