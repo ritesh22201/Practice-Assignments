@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; width: 30%; margin: auto;" id="container">
+        <h1 style="text-align: center;">Signup Page</h1>
+        <input type="text" id="name" placeholder="Enter your name...">
+        <input type="text" id="email" placeholder="Enter your email...">
+        <input type="password" id="pass" placeholder="Enter your password...">
+        <button onclick="onSignup()">Sign up</button>
+    </div>
+</body>
+<script>
+    const onSignup = () => {
+        const payload = {
+            name : document.getElementById('name').value,
+            email : document.getElementById('email').value,
+            pass: document.getElementById('pass').value
+        }
+
+        fetch('http://localhost:8080/users/register', {
+            method : 'POST',
+            headers : {
+                'Content-type' : 'application/json'
+            },
+            body : JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    }
+</script>
+</html>
