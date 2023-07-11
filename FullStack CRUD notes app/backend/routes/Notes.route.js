@@ -1,15 +1,16 @@
 const express = require('express');
+const authenticate = require('../middlewares/authenticate.middleware');
 const notesRouter = express.Router();
 
-notesRouter.get('/', (req, res) => {
+notesRouter.get('/', authenticate, (req, res) => {
     res.send('Home notes')
 })
 
-notesRouter.post('/create', (req, res) => {
+notesRouter.post('/create', authenticate, (req, res) => {
     res.send('created')
 })
 
-notesRouter.delete('/delete/:id', (req, res) => {
+notesRouter.delete('/delete/:id', authenticate, (req, res) => {
     res.send('created')
 })
 
