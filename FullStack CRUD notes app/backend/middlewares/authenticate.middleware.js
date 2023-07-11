@@ -5,7 +5,8 @@ const authenticate = (req, res, next) => {
     if(token){
         jwt.verify(token, 'bonjo', (err, decoded) => {
             if(decoded){
-                next()
+                req.body.user = decoded.userID;
+                next();
             }
             else{
                 res.status(400).send({'msg' : 'Please login'});

@@ -6,6 +6,6 @@ const noteSchema = new mongoose.Schema({
     user : String
 })
 
-const NoteModel = mongoose.model('user', userSchema);
+const NotesModel = mongoose.model('notes', noteSchema);
 
-module.exports = UserModel;
+module.exports = NotesModel;

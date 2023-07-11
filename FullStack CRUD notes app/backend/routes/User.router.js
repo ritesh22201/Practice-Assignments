@@ -33,7 +33,7 @@ userRouter.post('/login', async (req, res) => {
                     res.status(400).send({ 'msg': 'Wrong credentials' })
                 }
                 else {
-                    const token = jwt.sign({ email }, 'bonjo', { expiresIn: '1h' });
+                    const token = jwt.sign({ userID : user._id }, 'bonjo', { expiresIn: '1h' });
                     res.status(200).send({ 'msg': 'User logged in successfully', token: token });
                 }
             })
