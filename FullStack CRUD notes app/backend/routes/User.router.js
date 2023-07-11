@@ -7,7 +7,7 @@ const userRouter = express.Router();
 userRouter.post('/register', async (req, res) => {
     const { pass } = req.body;
     try {
-        bcrypt.hash(pass, 10, async (err, hash) => {
+        bcrypt.hash(pass, 5, async (err, hash) => {
             if (err) {
                 res.status(400).send({ 'msg': 'Something went wrong', 'error': err.message })
             }
