@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const auth = (req, res, next) => {
-    const {token} = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization.split(' ')[1];
 
     if(!token){
         return res.status(400).send({'msg' : 'Token not found'});
@@ -13,8 +13,8 @@ const auth = (req, res, next) => {
             res.status(400).send({'msg' : 'Invalid token'})
         }
         else{
-            req.body.username = decoded.username;
-            req.body.userID = decoded.userID;
+            req.username = decoded.username;
+            req.userID = decoded.userID;
             next();
         }
     })

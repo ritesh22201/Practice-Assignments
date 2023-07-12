@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.post('/', auth, async(req, res) => {
     try {
-        // const {title, content} = req.body;
-        const post = await Post.create(req.body);
-        res.send({'msg' : 'Post added to the DB', post})
+        const post = await Post.create({...req.body, username : req.username, userID : req.userID});
+        res.send({'msg' : 'Post added to the DB', post});
+
     } catch (error) {
         res.status(400).send(error.message);
     }
