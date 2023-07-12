@@ -3,21 +3,18 @@ const mongoose = require('mongoose');
 const app = express();
 const userRouter = require('./routes/userRoutes');
 const postRouter = require('./routes/postRouter');
+const connect = require('./db');
 app.use(express.json());
-
-const connect = async() => {
-    try {
-        await mongoose.connect('mongodb+srv://ritesh22201:Ritesh12345@cluster0.qztm0a3.mongodb.net/authentication2?retryWrites=true&w=majority');
-        console.log('connected');
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 app.use('/user', userRouter);
 app.use('/post', postRouter)
 
-app.listen(8800, () => {
-    connect();
+
+app.listen(8800, async() => {
+    try {
+        await connect;
+        console.log('Connected to the DB');
+    } catch (error) {
+        console.log(error.message);
+    }
     console.log('Server is running at the port 8800');
 })

@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema({
   });
   
   // Create the model
-  const Post = mongoose.model('User', postSchema);
+  const Post = mongoose.model('post', postSchema);
   
   // Export the model
   module.exports = Post;
