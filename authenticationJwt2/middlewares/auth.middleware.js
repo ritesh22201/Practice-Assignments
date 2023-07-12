@@ -13,8 +13,8 @@ const auth = (req, res, next) => {
             res.status(400).send({'msg' : 'Invalid token'})
         }
         else{
-            req.username = decoded.username;
-            req.userID = decoded.userID;
+            req.body.username = decoded.username;
+            req.body.userID = decoded.userID;
             next();
         }
     })
