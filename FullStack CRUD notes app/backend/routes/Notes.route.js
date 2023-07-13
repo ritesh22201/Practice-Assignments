@@ -21,6 +21,24 @@ notesRouter.post('/create', authenticate, async(req, res) => {
     }
 })
 
+notesRouter.patch('/update/:id', authenticate, async(req, res) => {
+    const id = req.params.id;
+    const note = await NotesModel.findOne({_id : id});
+    const userID_in_notes = note.userID;
+    try {
+        if(req.body.userID === userID_in_notes){
+            res.status(400).send({'msg' : 'User is unauthorized'});
+        }
+        else{
+            const updatedNotes = await NotesModel.create({_id : id}, req.body, {new : true});
+            res.status(200).send({'msg' : 'Notes posted', updatedNotes});
+        }
+
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+})
+
 notesRouter.delete('/delete/:id', authenticate, async(req, res) => {
     const noteID = req.params.id;
     try {
